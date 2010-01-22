@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["twoism", "toastyapps", "jacqui", "mrkurt"]
   s.date = %q{2010-01-21}
   s.description = %q{Versioning for MongoMapper}
-  s.email = %q{mrkurt@gmail.com}
+  s.email = %q{signalstatic@gmail.com}
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
      "test/test_helper.rb",
      "versioned.gemspec"
   ]
-  s.homepage = %q{http://github.com/mrkurt/versioned}
+  s.homepage = %q{http://github.com/twoism/versioned}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
