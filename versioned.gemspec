@@ -5,33 +5,37 @@
 
 Gem::Specification.new do |s|
   s.name = %q{versioned}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["twoism", "toastyapps", "jacqui"]
-  s.date = %q{2009-12-17}
+  s.authors = ["twoism", "toastyapps", "jacqui", "mrkurt"]
+  s.date = %q{2010-01-21}
   s.description = %q{Versioning for MongoMapper}
-  s.email = %q{signalstatic@gmail.com}
+  s.email = %q{mrkurt@gmail.com}
   s.extra_rdoc_files = [
-    "README.markdown"
+    "README.rdoc"
   ]
   s.files = [
-    "README.markdown",
+    ".gitignore",
+     "README.rdoc",
      "Rakefile",
      "VERSION",
      "lib/version.rb",
      "lib/versioned.rb",
+     "pkg/versioned-0.1.0.gem",
      "test/between_test.rb",
      "test/changes_test.rb",
      "test/comparable_test.rb",
      "test/creation_test.rb",
      "test/latest_changes_test.rb",
+     "test/lock_test.rb",
      "test/revert_test.rb",
      "test/schema.rb",
+     "test/specified_version_key_test.rb",
      "test/test_helper.rb",
      "versioned.gemspec"
   ]
-  s.homepage = %q{http://github.com/twoism/versioned}
+  s.homepage = %q{http://github.com/mrkurt/versioned}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
@@ -42,8 +46,10 @@ Gem::Specification.new do |s|
      "test/comparable_test.rb",
      "test/creation_test.rb",
      "test/latest_changes_test.rb",
+     "test/lock_test.rb",
      "test/revert_test.rb",
      "test/schema.rb",
+     "test/specified_version_key_test.rb",
      "test/test_helper.rb"
   ]
 

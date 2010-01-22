@@ -8,3 +8,5 @@ require 'mongo_mapper'
 require 'versioned'
 require 'schema'
 begin; require 'redgreen'; rescue LoadError; end
+
+
