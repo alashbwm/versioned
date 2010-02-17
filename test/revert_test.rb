@@ -17,9 +17,12 @@ class RevertTest < Test::Unit::TestCase
     end
 
     should 'do nothing for a non-existent version' do
-      attributes = @user.attributes
+      attributes = @user.attributes.clone
       @user.revert_to!(nil)
-      assert_equal attributes, @user.attributes
+
+      attributes.each do |k,v|
+        assert_equal @user[k].to_s, v.to_s #dates aren't comparing well
+      end
     end
 
     should 'return the new version number' do

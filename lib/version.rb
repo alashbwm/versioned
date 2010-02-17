@@ -31,6 +31,6 @@ class Version
   def find_related(*args)
     options = args.extract_options!
     params = options.merge(:versioned_id => versioned_id, :versioned_type => versioned_type)
-    self.class.find(args.first, params)
+    self.class.first(params)
   end
 end

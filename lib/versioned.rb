@@ -12,13 +12,9 @@ module Versioned
   module LockingInstanceMethods
     private
       #new? isn't working
-      def is_new_document?
-        (read_attribute(self.version_lock_key).blank? && changes[self.version_lock_key.to_s].blank?) ||
-        (changes[self.version_lock_key.to_s] && changes[self.version_lock_key.to_s].first.blank?)
-      end
       def prep_lock_version
         old = read_attribute(self.version_lock_key)
-        if !is_new_document? || old.blank?
+        if !new? || old.blank?
           v = (Time.now.to_f * 1000).ceil.to_s
           write_attribute self.version_lock_key, v
         end
@@ -28,7 +24,9 @@ module Versioned
 
       def save_to_collection(options = {})
         current_version = prep_lock_version
-        if is_new_document?
+        old_new = new?
+        @new = false
+        if old_new
           collection.insert(to_mongo, :safe => true)
         else
           selector = { :_id => read_attribute(:_id), self.version_lock_key => current_version }
@@ -80,7 +78,7 @@ module Versioned
           else
             conditions = condition
           end
-          find(:all, 
+          all( 
             :number => conditions,
             :order => "number #{(from_number > to_number) ? 'DESC' : 'ASC'}"
           )
