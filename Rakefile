@@ -6,11 +6,11 @@ require 'rake/rdoctask'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |g|
-    g.name = 'mrkurt-versioned'
+    g.name = 'versioned'
     g.summary = %(Versioning for MongoMapper)
     g.description = %(Versioning for MongoMapper)
-    g.email = 'mrkurt@gmail.com'
-    g.homepage = 'http://github.com/mrkurt/versioned'
+    g.email = 'signalstatic@gmail.com'
+    g.homepage = 'http://github.com/twoism/versioned'
     g.authors = %w(twoism toastyapps jacqui mrkurt)
   end
   Jeweler::GemcutterTasks.new
