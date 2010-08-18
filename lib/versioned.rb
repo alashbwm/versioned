@@ -1,7 +1,7 @@
 require 'version'
 
 module Versioned
-  class StaleDocumentError < MongoMapper::MongoMapperError; end
+  class StaleDocumentError < MongoMapper::Error; end
   def self.included(base)
     base.extend ClassMethods
     base.class_eval do
@@ -55,7 +55,7 @@ module Versioned
 
       if self.respond_to?(:version_use_key)
         self.version_use_key = self.version_lock_key
-        (self.version_except_columns ||= []) << self.version_lock_key.to_s #don't version the lock key 
+        (self.version_except_columns ||= []) << self.version_lock_key.to_s #don't version the lock key
       end
     end
 
@@ -78,7 +78,7 @@ module Versioned
           else
             conditions = condition
           end
-          all( 
+          all(
             :number => conditions,
             :order => "number #{(from_number > to_number) ? 'DESC' : 'ASC'}"
           )
@@ -156,7 +156,7 @@ module Versioned
       end
 
       def last_version
-        @last_version ||= versions.inject(1){|max, version| version.number > max ? version.number : max} 
+        @last_version ||= versions.inject(1){|max, version| version.number > max ? version.number : max}
       end
 
       def reverted?
@@ -186,17 +186,17 @@ module Versioned
           changes
         end
       end
-      
+
       def revert
         revert_to self.versions.at(self.version).previous
       end
-      
+
       def retrieve_version n
         versions.find_by_number(n).changes.each do |n,v|
           self.send("#{n.to_sym}=",v.first)
-        end 
+        end
       end
-      
+
       def revert_to(value)
         to_number = versions.number_at(value)
         changes = changes_between(version, to_number)
@@ -221,3 +221,4 @@ module Versioned
       end
   end
 end
+
